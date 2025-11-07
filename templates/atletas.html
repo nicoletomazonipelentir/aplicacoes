@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Atletas</title>
+</head>
+<body>
+  <h2>Cadastro de Atletas</h2>
+  <form method="post" action="/novo_atleta">
+    Nome: <input name="nome"><br>
+    Idade: <input name="idade"><br>
+    Clube: <input name="clube"><br>
+    Posição: <input name="posicao"><br>
+    <button type="submit">Salvar</button>
+  </form>
+
+  <h3>Lista de Atletas</h3>
+  <ul>
+    {% for a in atletas %}
+    <li>{{a.nome}} ({{a.clube}} - {{a.posicao}})</li>
+    {% endfor %}
+  </ul>
+
+  <a href="/">Voltar</a>
+</body>
+</html>
