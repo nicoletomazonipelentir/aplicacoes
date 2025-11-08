@@ -1,10 +1,19 @@
+import os
 from flask import Flask, render_template, request, redirect
 from pymongo import MongoClient
 
 app = Flask(__name__)
 
 # Conexão com o banco MongoDB Atlas
-client = MongoClient("SUA_STRING_DE_CONEXAO_DO_ATLAS")
+#client = MongoClient("mongodb+srv://aplicacoes_db:CokMfv13XUavZxiA@cluster0.xshcr4u.mongodb.net/?appName=Cluster0")
+# db = client["antidoping"]
+# atletas = db["atletas"]
+# exames = db["exames"]
+
+mongo_uri = os.getenv("MONGO_URI")
+client = MongoClient(mongo_uri)
+print("String de conexão:", mongo_uri)
+
 db = client["antidoping"]
 atletas = db["atletas"]
 exames = db["exames"]
@@ -31,6 +40,7 @@ def novo_atleta():
         'clube': clube,
         'posicao': posicao
     })
+    
     return redirect('/atletas')
 
 # ---- ROTAS DE EXAMES ----

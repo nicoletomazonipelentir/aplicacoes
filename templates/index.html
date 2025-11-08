@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <title>Sistema Antidoping</title>
@@ -8,8 +8,8 @@
   <h1>Sistema Antidoping</h1>
   <p>Escolha uma opção:</p>
   <ul>
-    <li><a href="/atletas.html">Cadastro de Atletas</a></li>
-    <li><a href="/exames.html">Cadastro de Exames</a></li>
+    <li><a href="{{ url_for('listar_atletas') }}">Cadastro de Atletas</a></li>
+    <li><a href="{{ url_for('listar_exames') }}">Cadastro de Exames</a></li>
   </ul>
 </body>
 </html>
