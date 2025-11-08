@@ -6,27 +6,32 @@
 </head>
 <body>
   <h2>Cadastro de Exames</h2>
+
   <form method="post" action="/novo_exame">
-    Atleta: 
+    Atleta:
     <select name="atleta">
       {% for a in atletas %}
-      <option value="{{a.nome}}">{{a.nome}}</option>
+      <option value="{{ a.nome }}">{{ a.nome }}</option>
       {% endfor %}
     </select><br>
+
     Data: <input type="date" name="data"><br>
+
     Resultado:
     <select name="resultado">
       <option>Negativo</option>
       <option>Positivo</option>
     </select><br>
+
     Observações: <input name="obs"><br>
+
     <button type="submit">Salvar</button>
   </form>
 
   <h3>Lista de Exames</h3>
   <ul>
     {% for e in exames %}
-    <li>{{e.atleta}} - {{e.data}} - {{e.resultado}}</li>
+    <li>{{ e.atleta }} - {{ e.data }} - {{ e.resultado }}</li>
     {% endfor %}
   </ul>
 
