@@ -16,6 +16,11 @@ client = MongoClient(mongo_uri)
 print("String de conexão:", mongo_uri)
 import os
 print("MONGO_URI:", os.getenv("MONGO_URI"))
+if not mongo_uri:
+    print("❌ ERRO: MONGO_URI não encontrada!")
+else:
+    print("✅ MONGO_URI encontrada!")
+
 
 
 db = client["antidoping"]
@@ -29,8 +34,11 @@ def index():
 # ---- ROTAS DE ATLETAS ----
 @app.route('/atletas')
 def listar_atletas():
-    lista = list(atletas.find())
-    return render_template('atletas.html', atletas=lista)
+    try:
+        lista = list(atletas.find())
+        return render_template('atletas.html', atletas=lista)
+    except Exception as e:
+        return f"Erro ao listar atletas: {e}"
 
 @app.route('/novo_atleta', methods=['POST'])
 def novo_atleta():
