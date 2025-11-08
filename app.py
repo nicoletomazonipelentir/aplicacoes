@@ -1,7 +1,8 @@
 import os
 from flask import Flask, render_template, request, redirect
 from pymongo import MongoClient
-
+from dotenv import load_dotenv
+load_dotenv()
 app = Flask(__name__)
 
 # Conexão com o banco MongoDB Atlas
@@ -13,6 +14,9 @@ app = Flask(__name__)
 mongo_uri = os.getenv("MONGO_URI")
 client = MongoClient(mongo_uri)
 print("String de conexão:", mongo_uri)
+import os
+print("MONGO_URI:", os.getenv("MONGO_URI"))
+
 
 db = client["antidoping"]
 atletas = db["atletas"]
