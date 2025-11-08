@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Sistema Antidoping</title>
 </head>
 <body>
-  <h1>Sistema Antidoping</h1>
-  <p>Escolha uma opção:</p>
+  <h2>Bem-vindo ao Sistema Antidoping</h2>
   <ul>
-    <li><a href="/atletas">Cadastro de Atletas</a></li>
-    <li><a href="/exames">Cadastro de Exames</a></li>
+    <li><a href="{{ url_for('listar_atletas') }}">Cadastro de Atletas</a></li>
+    <li><a href="{{ url_for('listar_exames') }}">Cadastro de Exames</a></li>
   </ul>
 </body>
 </html>
