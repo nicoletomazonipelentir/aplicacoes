@@ -5,21 +5,22 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
-# Conexão com o banco MongoDB Atlas
-#client = MongoClient("mongodb+srv://aplicacoes_db:CokMfv13XUavZxiA@cluster0.xshcr4u.mongodb.net/?appName=Cluster0")
-# db = client["antidoping"]
-# atletas = db["atletas"]
-# exames = db["exames"]
+#Conexão com o banco MongoDB Atlas
+client = MongoClient("mongodb+srv://aplicacoes_db:CokMfv13XUavZxiA@cluster0.xshcr4u.mongodb.net/?appName=Cluster0")
+db = client["antidoping"]
+atletas = db["atletas"]
+exames = db["exames"]
 
-mongo_uri = os.getenv("MONGO_URI")
-client = MongoClient(mongo_uri)
-print("String de conexão:", mongo_uri)
-import os
-print("MONGO_URI:", os.getenv("MONGO_URI"))
-if not mongo_uri:
-    print("❌ ERRO: MONGO_URI não encontrada!")
-else:
-    print("✅ MONGO_URI encontrada!")
+
+# mongo_uri = os.getenv("mongodb+srv://aplicacoes_db:CokMfv13XUavZxiA@cluster0.xshcr4u.mongodb.net/?appName=Cluster0")
+# client = MongoClient(mongo_uri)
+# print("String de conexão:", mongo_uri)
+# import os
+# print("MONGO_URI:", os.getenv("mongodb+srv://aplicacoes_db:CokMfv13XUavZxiA@cluster0.xshcr4u.mongodb.net/?appName=Cluster0"))
+# if not mongo_uri:
+#     print("❌ ERRO: MONGO_URI não encontrada!")
+# else:
+#     print("✅ MONGO_URI encontrada!")
 
 
 

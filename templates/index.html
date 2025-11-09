@@ -7,8 +7,10 @@
 <body>
   <h2>Bem-vindo ao Sistema Antidoping</h2>
   <ul>
-    <li><a href="{{ url_for('listar_atletas') }}">Cadastro de Atletas</a></li>
-    <li><a href="{{ url_for('listar_exames') }}">Cadastro de Exames</a></li>
+    {% comment %} <li><a href="{{ url_for('listar_atletas') }}">Cadastro de Atletas</a></li>
+    <li><a href="{{ url_for('listar_exames') }}">Cadastro de Exames</a></li> {% endcomment %}
+    <li><a href="atletas.html">Cadastro de Atletas</a></li>
+    <li><a href="exames.html">Cadastro de Exames</a></li>
   </ul>
 </body>
 </html>
