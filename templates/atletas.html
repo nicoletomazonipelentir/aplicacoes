@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Cadastro de Atletas</title>
+    <meta charset="UTF-8">
+    <title>Cadastro de Atletas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h2>Cadastro de Atletas</h2>
+  <div class="container">
+      <a href="{{ url_for('index') }}" class="voltar">← Voltar ao Início</a>
 
-  <form method="post" action="/novo_atleta">
-    Nome: <input name="nome"><br>
-    Idade: <input name="idade"><br>
-    Clube: <input name="clube"><br>
-    Posição: <input name="posicao"><br>
-    <button type="submit">Salvar</button>
-  </form>
+      <div class="titulos">
+          <span>Formulário</span>
+          <span>Resultados</span>
+      </div>
 
-  <h3>Lista de Atletas</h3>
-  <ul>
-    {% for a in atletas %}
-    <li>{{ a.nome }} ({{ a.clube }} - {{ a.posicao }})</li>
-    {% endfor %}
-  </ul>
+      <div class="corpo">
+          <div class="formulario">
+              <form method="post" action="/novo_atleta">
+                  <input type="text" name="nome" placeholder="Nome" required>
+                  <input type="number" name="idade" placeholder="Idade" required>
+                  <input type="text" name="clube" placeholder="Clube" required>
+                  <input type="text" name="posicao" placeholder="Posição" required>
+                  <button type="submit">Salvar</button>
+              </form>
+          </div>
 
-  <a href="/">Voltar</a>
+          <div class="resultados">
+              <table>
+                  <tr>
+                      <th>Nome</th>
+                      <th>Idade</th>
+                      <th>Clube</th>
+                      <th>Posição</th>
+                  </tr>
+                  {% for atleta in atletas %}
+                  <tr>
+                      <td>{{ atleta.nome }}</td>
+                      <td>{{ atleta.idade }}</td>
+                      <td>{{ atleta.clube }}</td>
+                      <td>{{ atleta.posicao }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
+          </div>
+      </div>
+  </div>
 </body>
 </html>

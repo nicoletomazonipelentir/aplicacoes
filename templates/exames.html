@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Cadastro de Exames</title>
+    <meta charset="UTF-8">
+    <title>Cadastro de Exames</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h2>Cadastro de Exames</h2>
+  <div class="container">
+      <a href="{{ url_for('index') }}" class="voltar">← Voltar ao Início</a>
 
-  <form method="post" action="/novo_exame">
-    Atleta:
-    <select name="atleta">
-      {% for a in atletas %}
-      <option value="{{ a.nome }}">{{ a.nome }}</option>
-      {% endfor %}
-    </select><br>
+      <div class="titulos">
+          <span>Formulário</span>
+          <span>Resultados</span>
+      </div>
 
-    Data: <input type="date" name="data"><br>
+      <div class="corpo">
+          <div class="formulario">
+              <form method="post" action="/novo_exame">
+                  <select name="atleta" required>
+                      <option value="">Selecione o atleta</option>
+                      {% for atleta in atletas %}
+                      <option value="{{ atleta.nome }}">{{ atleta.nome }}</option>
+                      {% endfor %}
+                  </select>
+                  <input type="date" name="data" required>
+                  <input type="text" name="resultado" placeholder="Resultado" required>
+                  <input type="text" name="obs" placeholder="Observações">
+                  <button type="submit">Salvar</button>
+              </form>
+          </div>
 
-    Resultado:
-    <select name="resultado">
-      <option>Negativo</option>
-      <option>Positivo</option>
-    </select><br>
-
-    Observações: <input name="obs"><br>
-
-    <button type="submit">Salvar</button>
-  </form>
-
-  <h3>Lista de Exames</h3>
-  <ul>
-    {% for e in exames %}
-    <li>{{ e.atleta }} - {{ e.data }} - {{ e.resultado }}</li>
-    {% endfor %}
-  </ul>
-
-  <a href="/">Voltar</a>
+          <div class="resultados">
+              <table>
+                  <tr>
+                      <th>Atleta</th>
+                      <th>Data</th>
+                      <th>Resultado</th>
+                      <th>Observações</th>
+                  </tr>
+                  {% for exame in exames %}
+                  <tr>
+                      <td>{{ exame.atleta }}</td>
+                      <td>{{ exame.data }}</td>
+                      <td>{{ exame.resultado }}</td>
+                      <td>{{ exame.obs }}</td>
+                  </tr>
+                  {% endfor %}
+              </table>
+          </div>
+      </div>
+  </div>
 </body>
 </html>

@@ -3,18 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Sistema Antidoping</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-  <h2>Bem-vindo ao Sistema Antidoping</h2>
-  <ul>
-<!--
-<li><a href="{{ url_for('listar_atletas') }}">Cadastro de Atletas</a></li>
-<li><a href="{{ url_for('listar_exames') }}">Cadastro de Exames</a></li>
--->
-
-
-     <li><a href="/atletas">Cadastro de Atletas</a></li>
-    <li><a href="/exames">Cadastro de Exames</a></li>
-  </ul>
+<body class="inicio">
+  <div class="inicio-container">
+    <h2>Bem-vindo ao Sistema Antidoping</h2>
+    <div class="links">
+      <a href="/atletas">Cadastro de Atletas</a>
+      <a href="/exames">Cadastro de Exames</a>
+    </div>
+  </div>
 </body>
 </html>
